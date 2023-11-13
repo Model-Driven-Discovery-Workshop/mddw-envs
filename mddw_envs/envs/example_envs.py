@@ -183,7 +183,7 @@ class Env1b_2024(gym.Env):
 
     def step(self, beta):
         reward = None
-        assert self.states == [] or self.states.shape[0] < self.duration, "Reset before providing another action"
+        assert len(self.states) == 0 or self.states.shape[0] < self.duration, "Reset before providing another action"
         assert self.action_space.contains(beta), "Invalid action: %s"%beta
         self.actions.append(beta)
         self.tempactions = np.repeat(self.actions, self.window)
